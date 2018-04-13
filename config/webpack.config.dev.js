@@ -34,7 +34,25 @@ const webpackDev = { // 开发配置文件
             include: [config.SRC_PATH],
             exclude: [config.VENDORS_PATH],
             use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-        }]
+        },
+            {
+                test: /\.less$/,
+                include: [config.SRC_PATH],
+                exclude: [config.VENDORS_PATH],
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: config.rem
+                        }
+                    },
+                    'less-loader',
+
+                ]
+            }
+        ]
     },
     plugins: [
         new webpack.NamedModulesPlugin(), // 开发环境用于标识模块id

@@ -9,6 +9,7 @@ const webpack=require('webpack')
 
 const HTMLWebpackPlugin = require('html-webpack-plugin'); // 用于生成html
 
+
 // 获取html文件名，用于生成入口
 const getFileNameList = (path) => {
     let fileList = [];
@@ -90,22 +91,7 @@ module.exports = {
             include: [config.SRC_PATH],
             exclude: [config.VENDORS_PATH, config.NODE_MODULES_PATH],
             use: ['babel-loader']
-        },
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'px2rem-loader',
-                        options: {
-                            remUnit: 76.5//设计稿宽度/10
-                        }
-                    },
-                    'less-loader',
-
-                ]
-            }]
+        },]
     },
     plugins: [
         ...HTMLPlugins,

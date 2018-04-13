@@ -18,6 +18,10 @@ const sassExtracter = new ExtractTextWebpackPlugin({
     filename: './css/[name]-sass.[contenthash:8].css', // 直接导入的sass文件，提取时添加-sass标识
     allChunks: true,
 });
+const lessExtracter=new ExtractTextWebpackPlugin({
+    filename: './css/[name]-less.[contenthash:8].css', // 直接导入的sass文件，提取时添加-sass标识
+    allChunks: true,
+})
 
 const webpackProd = { // 生产配置文件
     output: {
@@ -53,12 +57,39 @@ const webpackProd = { // 生产配置文件
                     }, 'postcss-loader', 'sass-loader'],
                     publicPath: '../', // 默认发布路径会是css，会拼接成css/img/x.png，所以需要重置
                 })
+            },
+            {
+                test: /\.less$/,
+                include: [config.SRC_PATH],
+                exclude: [config.VENDORS_PATH],
+                use:lessExtracter.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true //css压缩
+                            }
+                        },
+
+                        {
+                            loader: 'px2rem-loader',
+                            options: {
+                                remUnit: config.rem
+                            }
+                        },
+                        'less-loader',
+
+                    ]
+            })
+
             }
         ]
     },
     plugins: [
         cssExtracter,
         sassExtracter,
+        lessExtracter,
         new webpack.DefinePlugin({ // 指定为生产环境，进而让一些library可以做一些优化
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
