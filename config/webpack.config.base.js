@@ -5,8 +5,9 @@ const fs = require('fs'); // nodejs文件模块，用于读取文件
 
 const config = require('./config.js'); // 获取配置
 
+const webpack=require('webpack')
+
 const HTMLWebpackPlugin = require('html-webpack-plugin'); // 用于生成html
-const  px2rem = require('postcss-px2rem');
 
 // 获取html文件名，用于生成入口
 const getFileNameList = (path) => {
@@ -23,7 +24,11 @@ const getFileNameList = (path) => {
 let htmlDirs = getFileNameList(config.HTML_PATH);
 
 let HTMLPlugins = []; // 保存HTMLWebpackPlugin实例
-let Entries = {}; // 保存入口列表
+//公共js列表
+let Entries = {
+    commons:'./src/commons.js'
+
+}; // 保存入口列表
 
 // 生成HTMLWebpackPlugin实例和入口列表
 htmlDirs.forEach((page) => {
@@ -90,15 +95,24 @@ module.exports = {
                 test: /\.less$/,
                 use: [
                     'style-loader',
-                    { loader: 'css-loader', options: { importLoaders: 1 } },
-                    'less-loader'
+                    'css-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 76.5//设计稿宽度/10
+                        }
+                    },
+                    'less-loader',
+
                 ]
             }]
     },
-    postcss: function() {
-        return [px2rem({remUnit: 34.5})];
-    },
     plugins: [
-        ...HTMLPlugins, // 扩展运算符生成所有HTMLPlugins
+        ...HTMLPlugins,
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+        // 扩展运算符生成所有HTMLPlugins
     ]
 };

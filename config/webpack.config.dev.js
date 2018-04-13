@@ -24,17 +24,17 @@ const webpackDev = { // 开发配置文件
         // }
     },
     module: {
-        // rules: [{
-        //     test: /\.css$/, // 开发环境不提取css
-        //     include: [config.SRC_PATH],
-        //     exclude: [config.VENDORS_PATH],
-        //     use: ['style-loader', 'css-loader', 'postcss-loader']
-        // }, {
-        //     test: /\.scss$/, // 开发环境不提取css
-        //     include: [config.SRC_PATH],
-        //     exclude: [config.VENDORS_PATH],
-        //     use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-        // }]
+        rules: [{
+            test: /\.css$/, // 开发环境不提取css
+            include: [config.SRC_PATH],
+            exclude: [config.VENDORS_PATH],
+            use: ['style-loader', 'css-loader', 'postcss-loader']
+        }, {
+            test: /\.scss$/, // 开发环境不提取css
+            include: [config.SRC_PATH],
+            exclude: [config.VENDORS_PATH],
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+        }]
     },
     plugins: [
         new webpack.NamedModulesPlugin(), // 开发环境用于标识模块id
