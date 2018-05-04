@@ -44,7 +44,7 @@ htmlDirs.forEach((page) => {
 
     if (found === -1) { // 有入口js文件的html，添加本页的入口js和公用js，并将入口js写入Entries中
         htmlConfig.chunks = [page, 'commons'];
-        Entries[page] = `./src/${page}.js`;
+        Entries[page] = `./src/js/${page}.js`;
     } else { // 没有入口js文件，chunk为空
         htmlConfig.chunks = [];
     }
