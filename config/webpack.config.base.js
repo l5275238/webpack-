@@ -35,7 +35,8 @@ let Entries = {
 htmlDirs.forEach((page) => {
     let htmlConfig = {
         filename: `${page}.html`,
-        template: path.join(config.HTML_PATH, `./${page}.html`) // 模板文件
+        template: path.join(config.HTML_PATH, `./${page}.html`), // 模板文件,
+        minify:true
     };
 
     let found = config.ignorePages.findIndex((val) => {

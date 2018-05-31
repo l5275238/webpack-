@@ -42,6 +42,7 @@ const webpackDev = { // 开发配置文件
                 use: [
                     'style-loader',
                     'css-loader',
+                    'postcss-loader',
                     {
                         loader: 'px2rem-loader',
                         options: {

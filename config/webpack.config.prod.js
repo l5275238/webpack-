@@ -71,6 +71,7 @@ const webpackProd = { // 生产配置文件
                                 minimize: true //css压缩
                             }
                         },
+                        'postcss-loader',
 
                         {
                             loader: 'px2rem-loader',
@@ -101,7 +102,15 @@ const webpackProd = { // 生产配置文件
             name: 'commons', // 指定公共 bundle 的名称。HTMLWebpackPlugin才能识别
             filename: 'js/commons.[chunkhash:8].bundle.js'
         }),
-        new UglifyJSPlugin(),
+        new UglifyJSPlugin({
+            uglifyOptions:{
+                compress: {
+                    warnings: false,
+                    drop_debugger: true,//关闭debug
+                    drop_console: true,//关闭console
+                }
+            }
+        }),
     ]
 };
 
