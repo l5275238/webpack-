@@ -1,5 +1,5 @@
 import '../css/index.less'
-import '../css/aa.css'
+import 'video.js/dist/video-js.css';
 import videojs from 'video.js'
 
 import soshm from 'soshm'

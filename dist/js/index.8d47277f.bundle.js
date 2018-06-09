@@ -1,0 +1,1 @@
+webpackJsonp([0],{bYep:function(e,n){},vGYV:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),function(e){var n=t("bYep");t.n(n);window.onload=function(){var e=document.createElement("a");e.innerHTML="test h1",e.href="b.html",document.body.appendChild(e)}}.call(n,t("L7Pj"))}},["vGYV"]);
