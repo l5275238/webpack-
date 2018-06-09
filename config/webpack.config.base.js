@@ -36,7 +36,7 @@ htmlDirs.forEach((page) => {
     let htmlConfig = {
         filename: `${page}.html`,
         template: path.join(config.HTML_PATH, `./${page}.html`), // 模板文件,
-        minify:true
+
     };
 
     let found = config.ignorePages.findIndex((val) => {
@@ -66,7 +66,7 @@ module.exports = {
     // },
     module: {
         rules: [{
-            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            test: /\.(ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
             include: [config.SRC_PATH],
             exclude: [config.VENDORS_PATH], // 忽略第三方的任何代码
             use: [{ // 导入字体文件，并最打包到output.path+ options.name对应的路径中
@@ -98,7 +98,7 @@ module.exports = {
         ...HTMLPlugins,
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery'
+            jQuery: 'jquery',
         })
         // 扩展运算符生成所有HTMLPlugins
     ]

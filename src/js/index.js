@@ -1,10 +1,16 @@
 import '../css/index.less'
+import '../css/aa.css'
+import videojs from 'video.js'
 
+import soshm from 'soshm'
+window.videojs=videojs
 window.onload = () => {
-    console.log($);
-    debugger
-    let a = document.createElement('a');
-    a.innerHTML = 'test h1';
-    a.href = 'b.html';
-    document.body.appendChild(a);
+    var width=$(window).width();
+
+    var myPlayer = videojs("example_video_1");
+    myPlayer.width(width);
+    // soshm('.datasetconfig', {
+    //     sites: ['weixin', 'weixintimeline', 'yixin', 'weibo', 'qq', 'qzone']
+    // })
+    //
 };

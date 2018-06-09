@@ -28,7 +28,12 @@ const webpackDev = { // 开发配置文件
             test: /\.css$/, // 开发环境不提取css
             include: [config.SRC_PATH],
             exclude: [config.VENDORS_PATH],
-            use: ['style-loader', 'css-loader', 'postcss-loader']
+            use: ['style-loader', 'css-loader', 'postcss-loader', {
+                loader: 'px2rem-loader',
+                options: {
+                    remUnit: config.rem
+                }
+            },]
         }, {
             test: /\.scss$/, // 开发环境不提取css
             include: [config.SRC_PATH],
