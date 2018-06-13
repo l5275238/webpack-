@@ -13,9 +13,21 @@ const Servers={
     },
     addShop:function (data) {
        return ajax({
-           url:"/manager/productpage/queryForPage",
+           url:"/manager/orderpage/orderap",
            data:data,
        })
+    },
+    getToken:function () {
+        return ajax({
+            url:"https://api.weixin.qq.com/cgi-bin/token",
+            method:'get',
+            noHost:true,
+            data:{
+                grant_type:"client_credential",
+                appid:"wxa55d67c39e421f09",
+                secret:"f38350b1a24388e1bc694d48c60ee84a"
+            }
+        })
     }
 
 

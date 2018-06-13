@@ -17,6 +17,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <script type="text/JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
 <style>
 
@@ -26,7 +27,7 @@
     <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered " controls preload="none" height="250"
            poster=""
            data-setup="{}">
-        <source src="http://47.94.215.56:8080/GL/mv/cxli.mp4" type='video/mp4' />
+        <source src="http://nonghe.vaovao.cn/GL/mv/cxli.mp4" type='video/mp4' />
 
         <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
         <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
@@ -39,31 +40,31 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">产品名称</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入产品">
+                <input class="weui-input" id="productName" type="text" pattern="[0-9]*" placeholder="请输入产品">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">数量</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入数量">
+                <input class="weui-input" id="num" type="text"  pattern="[0-9]*" placeholder="请输入数量">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">联系人</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入姓名">
+                <input class="weui-input" id="linkMan" type="text" data-key="linkMan" pattern="[0-9]*" placeholder="请输入姓名">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">联系人号码</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入联系人号码">
+                <input class="weui-input" id="phone" type="text" data-key="phone" pattern="[0-9]*" placeholder="请输入联系人号码">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">地址</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入地址">
+                <input class="weui-input" type="text"  id="address" data-key="address" pattern="[0-9]*" placeholder="请输入地址">
             </div>
         </div>
     </div>
@@ -72,7 +73,9 @@
     <div class="active">
         满100有优惠50
     </div>
-
+    <div class="active" id="detail">
+        满100有优惠50
+    </div>
 
 </section>
 <footer>
