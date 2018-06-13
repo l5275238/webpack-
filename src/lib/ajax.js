@@ -11,7 +11,10 @@ const ajax=function (params) {
             type:params.method||'POST',
             data:params.data,
             success:function (data) {
-                res(data.data)
+                if(data.status==0){
+                    res(data.data)
+                }
+
             }
         })
     })

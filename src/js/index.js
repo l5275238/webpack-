@@ -24,6 +24,7 @@ server.getToken().then()
 
         $('#productName').val(domObj.productName)
         $('#detail').html(domObj.productDesc)
+        $('#price').val(domObj.unitSalePrice)
 
     })
 
@@ -38,10 +39,16 @@ function add() {
             num:$('#num').val(),
             linkMan:$('#linkMan').val(),
               phone:$('#phone').val(),
-            address:$('#address').val()
+            address:$('#address').val(),
+            price:parseFloat($('#price').val())
         }
+        server.addShop(data).then(function () {
+            alert('下单成功')
+        })
 
 }
 
-
+$('#pay').on('click',function () {
+    add()
+})
 };
