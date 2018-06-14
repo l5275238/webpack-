@@ -1,19 +1,93 @@
 <!doctype html>
-<html lang="en">
+<html lang=en>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-<link href="./css/index-less.ef8f8cfe.css" rel="stylesheet"></head>
+    <meta charset=UTF-8>
 
+    <meta name=viewport content="initial-scale=1,user-scalable=no,maxinum-scale=1,width=device-width">
+
+    <meta content="telephone=no" name=format-detection>
+
+    <meta name=applicable-device content=mobile>
+
+    <meta name=apple-mobile-web-app-capable content=yes>
+
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+
+    <meta name=format-detection content="telephone=no,email=no">
+    <title>Document</title>
+    <link rel=stylesheet href=https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css>
+    <link rel=stylesheet href=https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css>
+    <script type=text/JavaScript src=http://res.wx.qq.com/open/js/jweixin-1.0.0.js></script>
+<link href=./css/index-css.5bc34a96.css rel=stylesheet><link href=./css/index-less.fa73e86a.css rel=stylesheet></head>
 <style>
 
 </style>
 <body>
-<div class="ssssadsadas">
+<header>
+    <video id=example_video_1 class="video-js vjs-default-skin vjs-big-play-centered" controls preload=none height=250 poster="" data-setup={}>
+        <source src=http://nonghe.vaovao.cn/GL/mv/cxli.mp4 type=video/mp4>
 
-</div>
+        <track kind=captions src=demo.captions.vtt srclang=en label=English><!-- Tracks need an ending tag thanks to IE9 -->
+        <track kind=subtitles src=demo.captions.vtt srclang=en label=English><!-- Tracks need an ending tag thanks to IE9 -->
+    </video>
 
-<script type="text/javascript" src="js/commons.9aa255a6.bundle.js"></script><script type="text/javascript" src="js/index.8d47277f.bundle.js"></script></body>
+</header>
+<section>
+<form>
+    <div class="weui-cells weui-cells_form">
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>产品名称</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input id=productName disabled=disabled type=text pattern=[0-9]* placeholder=请输入产品>
+            </div>
+        </div>
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>产品价格</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input id=price type=text disabled=disabled pattern=[0-9]* placeholder=请输入产品>
+            </div>
+        </div>
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>数量</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input id=num type=text pattern=[0-9]* placeholder=请输入数量>
+            </div>
+        </div>
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>联系人</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input id=linkMan type=text data-key=linkMan pattern=[0-9]* placeholder=请输入姓名>
+            </div>
+        </div>
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>联系人号码</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input id=phone type=text data-key=phone pattern=[0-9]* placeholder=请输入联系人号码>
+            </div>
+        </div>
+        <div class=weui-cell>
+            <div class=weui-cell__hd><label class=weui-label>地址</label></div>
+            <div class=weui-cell__bd>
+                <input class=weui-input type=text id=address data-key=address pattern=[0-9]* placeholder=请输入地址>
+            </div>
+        </div>
+    </div>
+
+</form>
+    <div class=active id=acitive>
+        满100有优惠50
+    </div>
+    <div class=active id=detail>
+        满100有优惠50
+    </div>
+
+</section>
+<footer>
+    <div>分享</div>
+    <div id=pay>支付</div>
+</footer>
+
+<script type=text/javascript src=js/commons.bcd41e7d.bundle.js></script><script type=text/javascript src=js/index.6b22cdf6.bundle.js></script></body>
+<script src=https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js></script>
+<script src=https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js></script>
 </html>

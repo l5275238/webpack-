@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>Document</title>
+    <title>产品支付</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
     <script type="text/JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -40,13 +40,13 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">产品名称</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" id="productName" type="text" pattern="[0-9]*" placeholder="请输入产品">
+                <input class="weui-input" id="productName" disabled="disabled"  type="text" pattern="[0-9]*" placeholder="请输入产品">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">产品价格</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" id="price" type="text" pattern="[0-9]*" placeholder="请输入产品">
+                <input class="weui-input" id="price" type="text"  disabled="disabled" pattern="[0-9]*" placeholder="请输入产品">
             </div>
         </div>
         <div class="weui-cell">
@@ -76,7 +76,7 @@
     </div>
 
 </form>
-    <div class="active">
+    <div class="active" id="acitive">
         满100有优惠50
     </div>
     <div class="active" id="detail">
