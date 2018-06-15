@@ -6,6 +6,7 @@ import server from '../lib/index/api'
 import soshm from 'soshm'
 window.videojs=videojs
 window.onload = () => {
+    setCoDe()
     var width=$(window).width();
     var domObj={}
 // server.getToken().then()
@@ -54,7 +55,12 @@ function add() {
 }
 $('#num').on('change',function () {
     let list=domObj.productRelationDTOList;
-    console.log(isNaN($(this).value));
+
+  if(isNaN($(this).val())){
+      alert('请输入数量');
+      $(this).val(1);
+      return
+  }
     let istNo=null
     domObj.noPrice=domObj.unitSalePrice
     if(list.length>0){
@@ -67,6 +73,11 @@ $('#num').on('change',function () {
         }
     }
 })
+    function setCoDe(){
+        let encodeUrl=encodeURIComponent(`http://192.168.10.1:8080/`)
+        let tempUrl=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa55d67c39e421f09&redirect_uri=${encodeUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        window.location.href=tempUrl;
+    }
 $('#pay').on('click',function () {
     if(!$('#address').val()){
         alert('请选择地址')
