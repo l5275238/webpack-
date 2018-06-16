@@ -2,7 +2,7 @@ import '../css/index.less'
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js'
 import server from '../lib/index/api'
-import '../../node_modules/jquery-weui/dist/js/jquery-weui'
+import '../../node_modules/jquery-weui/dist/js/jquery-weui.js'
 
 import soshm from 'soshm'
 window.videojs=videojs
@@ -23,10 +23,10 @@ window.onload = () => {
     myPlayer.width(width);
     myPlayer.ready(function(){
 
-        myPlayer.play();
+        // myPlayer.play();
     });
     server.getShop().then(data=>{
-         domObj=data.list[0];
+        domObj=data.list[0];
         domObj.noPrice=domObj.unitSalePrice;
         $('#productName').val(domObj.productName)
         $('#detail').html(domObj.productDesc)
@@ -34,22 +34,22 @@ window.onload = () => {
         active(domObj.productRelationDTOList)
     })
 
-function active(list) {
+    function active(list) {
         let html=""
-    if(list.length>0){
+        if(list.length>0){
 
             for(let value of list){
                 html+="满"+value.num+"价格："+value.price+"元赠送"+value.remark+";";
             }
+        }
+        $('#acitive').html(html)
     }
-    $('#acitive').html(html)
-}
-function add() {
+    function add() {
         let data={
             productId: domObj.id,
             num:$('#num').val(),
             linkMan:$('#linkMan').val(),
-              phone:$('#phone').val(),
+            phone:$('#phone').val(),
             address:$('#address').val(),
             price:domObj.noPrice
         }
@@ -57,57 +57,19 @@ function add() {
             alert('下单成功')
         })
 
-}
-$('#num').on('change',function () {
-    let list=domObj.productRelationDTOList;
-
-  if(isNaN($(this).val())){
-      alert('请输入数量');
-      $(this).val(1);
-      return
-  }
-    let istNo=null
-    domObj.noPrice=domObj.unitSalePrice
-    if(list.length>0){
-        for(let value of list ){
-            if(parseInt($(this).value)<value.num){
-                return istNo
-            }
-            domObj.noPrice=value.price
-            $('#price').val(domObj.noPrice)
-        }
     }
-})
-    // function setCoDe(){
-    //     let encodeUrl=encodeURIComponent(`http://192.168.10.1:8080/`)
-    //     let tempUrl=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa55d67c39e421f09&redirect_uri=${encodeUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-    //     window.location.href=tempUrl;
-    // }
-$('#pay').on('click',function () {
-    // if(!$('#address').val()){
-    //     alert('请选择地址')
-    //     return
-    // }
-    // if(!$('#num').val()){
-    //     alert('请选择数量')
-    //     return
-    // }
-    // if(!$('#phone').val()){
-    //     alert('请输入号码')
-    //     return
-    // }
-    // if(!$('#linkMan').val()){
-    //     alert('请输入联系人')
-    //     return
-    // }
-    $.actions({
-        actions: [
-            {
-                text: "发布",
-                className: "color-primary",
-            }]
-    });
-    debugger
-    add()
-})
+
+
+    $('#pay').on('click',function () {
+
+        $.actions({
+            actions: [
+                {
+                    text: "发布",
+                    className: "color-primary",
+                }]
+        });
+        debugger
+        add()
+    })
 };

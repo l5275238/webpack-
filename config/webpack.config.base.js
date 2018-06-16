@@ -92,8 +92,8 @@ module.exports = {
             }]
         }, {
             test: /\.js$/,
-            include: [config.SRC_PATH],
-            exclude: [config.VENDORS_PATH, config.NODE_MODULES_PATH],
+            // include: [config.SRC_PATH],
+            // exclude: [config.VENDORS_PATH, config.NODE_MODULES_PATH],
             use: ['babel-loader']
         },]
     },

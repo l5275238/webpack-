@@ -17,6 +17,12 @@ const Servers={
            data:data,
        })
     },
+    getCode:function () {
+      return ajax({
+          url:"/manager/orderpage/redirect",
+          method:'get',
+        })
+    },
     getToken:function () {
         return ajax({
             url:"https://api.weixin.qq.com/cgi-bin/token",

@@ -19,9 +19,9 @@ const webpackDev = { // 开发配置文件
         // publicPath: config.PUBLIC_PATH, // 静态资源存放位置，根目录的assets文件夹，确保publicPath总是以斜杠(/)开头和结尾。可以设置为CDN地址。这个选项类似url-prefix
         host: "0.0.0.0", // 设置为0.0.0.0并配合useLocalIp可以局域网访问
         useLocalIp: true, // 使用本机IP打开devServer，而不是localhost
-        // proxy: {// 可以通过proxy代理其他服务器的api
-        //     "/api": "http://localhost:3000"
-        // }
+        proxy: {// 可以通过proxy代理其他服务器的api
+            "/api": "http://nonghe.vaovao.cn:8080/despatch"
+        }
     },
     module: {
         rules: [{

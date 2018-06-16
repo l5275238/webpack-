@@ -9,7 +9,7 @@ const PROJECT_PATH = process.cwd(); // 项目目录
 const config = {
     PROJECT_PATH, // 项目目录
     CONFIG_PATH: path.join(__dirname), // 配置文件目录
-    SRC_PATH: path.join(PROJECT_PATH, './'), // 源文件目录
+    SRC_PATH: path.join(PROJECT_PATH, '../'), // 源文件目录
     BUILD_PATH: path.join(PROJECT_PATH, './dist/'), // 打包目录
     PUBLIC_PATH: '/assets/', // 静态文件存放目录
     HTML_PATH: path.join(PROJECT_PATH, './src/html/'),

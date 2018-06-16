@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-size: 16px;
+  box-sizing: border-box;
 }
 body{
   display: flex;
@@ -34,7 +35,7 @@ footer{
   height: 80px;
   z-index: 99;
   div{
-    width: 50%;
+    width: 100%;
     text-align: center;
     height: 100%;
     display: flex;
@@ -43,9 +44,38 @@ footer{
     background: #0BB20C;
     color: #fff;
   }
-  #pay{
-    background: #2b79ff;
 
+
+}
+.centent{
+  padding: 10px;
+  background: #FFFFFF;
+  div{
+    padding: 10px;
   }
-
+  h3{
+    font-size: 30px;
+  }
+}
+.top{
+  background: #FFFFFF;
+  font-size:20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #CCCCCC;
+}
+.activeList{
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  >div{
+    background: #FFFFFF;
+    padding: 10px;
+    background: #FFFFFF;
+  }
 }
