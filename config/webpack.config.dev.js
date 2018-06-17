@@ -20,7 +20,7 @@ const webpackDev = { // 开发配置文件
         host: "0.0.0.0", // 设置为0.0.0.0并配合useLocalIp可以局域网访问
         useLocalIp: true, // 使用本机IP打开devServer，而不是localhost
         proxy: {// 可以通过proxy代理其他服务器的api
-            "/api": "http://nonghe.vaovao.cn:8080/despatch"
+            "/api": "http://nonghe.vaovao.cn:8080/nonghe"
         }
     },
     module: {

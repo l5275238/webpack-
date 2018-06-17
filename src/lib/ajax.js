@@ -1,4 +1,4 @@
-const HostAjax="/api"
+const HostAjax="http://nonghe.vaovao.cn:8080/despatch"
 
 const ajax=function (params) {
     return new Promise((res,ref)=>{

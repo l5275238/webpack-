@@ -9,7 +9,9 @@ window.videojs=videojs
 window.onload = () => {
     server.getCode()
     var width=$(window).width();
-    var domObj={}
+    var domObj={};
+   var  selectActive;
+
 // server.getToken().then()
     // wx.config({
     //     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -28,9 +30,9 @@ window.onload = () => {
     server.getShop().then(data=>{
         domObj=data.list[0];
         domObj.noPrice=domObj.unitSalePrice;
-        $('#productName').val(domObj.productName)
-        $('#detail').html(domObj.productDesc)
-        $('#price').val(domObj.noPrice)
+        $('#productName').html(domObj.productName)
+        $('#cetent').html(domObj.productDesc)
+        $('#price').html(domObj.noPrice+'元')
         active(domObj.productRelationDTOList)
     })
 
@@ -38,11 +40,17 @@ window.onload = () => {
         let html=""
         if(list.length>0){
 
-            for(let value of list){
-                html+="满"+value.num+"价格："+value.price+"元赠送"+value.remark+";";
+            for(var i =0;i<list.length;i++){
+                let value =list[i];
+                if(i==0){
+                    selectActive=value
+                }
+              let div= ` <div  data-type="${JSON.stringify(value)}" class="${i==0?'select':''}">${value.num*value.price}元</div>`
+
+                $('#activeList').append(div)
             }
         }
-        $('#acitive').html(html)
+
     }
     function add() {
         let data={
@@ -60,16 +68,39 @@ window.onload = () => {
     }
 
 
-    $('#pay').on('click',function () {
+    $('#activeList').on('click','div',function () {
 
-        $.actions({
-            actions: [
-                {
-                    text: "发布",
-                    className: "color-primary",
-                }]
+    $('#activeList>div').removeClass('select');
+    $(this).addClass('select')
+    selectActive=$(this).attr(' data-type');
+        $.confirm("前往支付？", function() {
+            location.href=`/index.html?selectActive=${JSON.stringify(selectActive)}`
+        }, function() {
+            //点击取消后的回调函数
         });
-        debugger
-        add()
+
+    }
+)
+    $('#pay').on('click',function () {
+       show()
+
+
+    })
+    $('#hide').on('click',function () {
+        hide()
     })
 };
+function show() {
+    $('.isShow').show();
+    $('#activShow').addClass('showSecion')
+    $('.disNom > .bagornnd').show()
+}
+function hide() {
+    $('#activShow').removeClass('showSecion')
+    $('.disNom > .bagornnd').hide()
+    setTimeout(function () {
+        $('.isShow').hide();
+    },1000)
+
+
+}

@@ -10,6 +10,8 @@ window.onload = () => {
     server.getCode()
     var width=$(window).width();
     var domObj={}
+    let select=JSON.parse(getUrlParam('selectActive'));
+
 // server.getToken().then()
     // wx.config({
     //     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -107,7 +109,12 @@ $('#pay').on('click',function () {
                 className: "color-primary",
             }]
     });
-    debugger
+
     add()
 })
 };
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
