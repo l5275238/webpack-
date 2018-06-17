@@ -43,15 +43,19 @@ window.onload = () => {
             for(var i =0;i<list.length;i++){
                 let value =list[i];
                 if(i==0){
-                    selectActive=value
+                    selectActive=domObj.productRelationDTOList[i];
+                    setDetail(value)
                 }
-              let div= ` <div  data-type="${JSON.stringify(value)}" class="${i==0?'select':''}">${value.num*value.price}元</div>`
+              let div= ` <div  data-type=${i} class=${i==0?'select':''}>${value.num*value.price}元</div>`
 
                 $('#activeList').append(div)
             }
         }
 
     }
+function setDetail(bin) {
+    $('#youhuiDetail').html(`数量${bin.num},单价${bin.price},赠送:${bin.remark}`)
+}
     function add() {
         let data={
             productId: domObj.id,
@@ -72,9 +76,11 @@ window.onload = () => {
 
     $('#activeList>div').removeClass('select');
     $(this).addClass('select')
-    selectActive=$(this).attr(' data-type');
+    selectActive=domObj.productRelationDTOList[$(this).attr('data-type')];
+
+        setDetail(selectActive)
         $.confirm("前往支付？", function() {
-            location.href=`/index.html?selectActive=${JSON.stringify(selectActive)}`
+            location.href=`/index.html?selectActive=${selectActive}`
         }, function() {
             //点击取消后的回调函数
         });
