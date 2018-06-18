@@ -19,9 +19,9 @@ gulp.task('text', function(){//发布到测试环境
 gulp.task('pro', function(){//发布到生产环境
     return gulp.src('dist/**')
         .pipe(scp2({
-            host: '192.168.2.4',
-            username: '',
-            password: '',
+            host: '47.94.215.56',
+            username: 'root',
+            password: 'gl123456.',
             dest: ''
         }))
         .on('error', function(err) {

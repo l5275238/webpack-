@@ -7,7 +7,6 @@ import '../../node_modules/jquery-weui/dist/js/jquery-weui.js'
 import soshm from 'soshm'
 window.videojs=videojs
 window.onload = () => {
-    server.getCode()
     var width=$(window).width();
     var domObj={};
    var  selectActive;
@@ -80,7 +79,8 @@ function setDetail(bin) {
 
         setDetail(selectActive)
         $.confirm("前往支付？", function() {
-            location.href=`/index.html?selectActive=${selectActive}`
+            // location.href=`/index.html?selectActive=${JSON.stringify(selectActive)}&id=${domObj.id}`
+            setCoDe(`/index.html?selectActive=${selectActive.id}&id=${domObj.id}`)
         }, function() {
             //点击取消后的回调函数
         });
@@ -100,6 +100,11 @@ function show() {
     $('.isShow').show();
     $('#activShow').addClass('showSecion')
     $('.disNom > .bagornnd').show()
+}
+function setCoDe(url){
+    let encodeUrl=encodeURIComponent(`http://nonghe.vaovao.cn/nonghe`+url)
+    let tempUrl=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa55d67c39e421f09&redirect_uri=${encodeUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+    window.location.href=tempUrl;
 }
 function hide() {
     $('#activShow').removeClass('showSecion')

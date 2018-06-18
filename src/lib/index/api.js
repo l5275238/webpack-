@@ -23,6 +23,15 @@ const Servers={
           method:'get',
         })
     },
+    setCode:function (code) {
+      return ajax({
+          url:"/manager/orderpage/orders",
+          method:"get",
+          data:{
+              code:code
+          }
+      })
+    },
     getToken:function () {
         return ajax({
             url:"https://api.weixin.qq.com/cgi-bin/token",
