@@ -10,7 +10,8 @@ window.onload = () => {
     server.getCode()
     var width=$(window).width();
     var domObj={}
-    let selectId=getUrlParam('selectActive');
+    let selectId=JSON.parse(getUrlParam('selectActive'));
+
     var select;
     let shopId=getUrlParam('id');
     // setCoDe()

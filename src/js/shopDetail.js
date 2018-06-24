@@ -80,7 +80,7 @@ function setDetail(bin) {
         setDetail(selectActive)
         $.confirm("前往支付？", function() {
             // location.href=`/index.html?selectActive=${JSON.stringify(selectActive)}&id=${domObj.id}`
-            setCoDe(`/index.html?selectActive=${selectActive.id}&id=${domObj.id}`)
+            setCoDe(`/index.html?selectActive=${JSON.stringify(selectActive.id)}&id=${domObj.id}`)
         }, function() {
             //点击取消后的回调函数
         });
@@ -103,6 +103,7 @@ function show() {
 }
 function setCoDe(url){
     let encodeUrl=encodeURIComponent(`http://nonghe.vaovao.cn/nonghe`+url)
+    alert(encodeUrl)
     let tempUrl=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa55d67c39e421f09&redirect_uri=${encodeUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
     window.location.href=tempUrl;
 }

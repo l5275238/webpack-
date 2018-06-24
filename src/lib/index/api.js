@@ -25,10 +25,13 @@ const Servers={
     },
     setCode:function (code) {
       return ajax({
-          url:"/manager/orderpage/orders",
-          method:"get",
+          url:"/wxpay/pay",
+          method:"post",
           data:{
-              code:code
+              code:code,
+              outTradeNo:"123213",
+              totalFee:"1111",
+              body:"2312"
           }
       })
     },
