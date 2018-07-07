@@ -6,8 +6,12 @@ const fs = require('fs'); // nodejs文件模块，用于读取文件
 const config = require('./config.js'); // 获取配置
 
 const webpack=require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const HTMLWebpackPlugin = require('html-webpack-plugin'); // 用于生成html
+function resolve (dir) {
+    return path.join(__dirname, '..', dir)
+}
 
 
 // 获取html文件名，用于生成入口
@@ -64,6 +68,15 @@ module.exports = {
     output: {
         path: config.BUILD_PATH, // 打包路径，本地物理路径
     },
+    resolve: {
+
+        alias: {
+
+            '@': resolve('src'),
+            '@static':resolve('static'),
+
+        }
+    },
     // postcss: function() {
     //     return [px2rem({remUnit: 34.5})];
     // },
@@ -102,7 +115,14 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../static'),
+                to: 'static',
+                ignore: ['.*']
+            }
+        ])
         // 扩展运算符生成所有HTMLPlugins
     ]
 };

@@ -6,15 +6,16 @@ const ajax=function (params) {
 
         $.ajax({
             url:(params.noHost?"":HostAjax)+params.url,
-            contentType:"application/json;charset=UTF-8",
+            contentType:params.contentType||"application/json;charset=UTF-8",
             dataType:"JSON",
             type:params.method||'POST',
             data:params.data,
             success:function (data) {
-                if(data.status==0){
-                    res(data.data)
-                }
+               res(data)
 
+            },
+            error:function (data) {
+                ref(data)
             }
         })
     })

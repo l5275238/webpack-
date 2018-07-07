@@ -17,23 +17,27 @@ const webpackDev = { // 开发配置文件
         inline: true, // 实时重载的脚本被插入到你的包(bundle)中，并且构建消息将会出现在浏览器控制台
         hot: true, // 配合webpack.NamedModulesPlugin、webpack.HotModuleReplacementPlugin完成MHR
         // publicPath: config.PUBLIC_PATH, // 静态资源存放位置，根目录的assets文件夹，确保publicPath总是以斜杠(/)开头和结尾。可以设置为CDN地址。这个选项类似url-prefix
-        host: "0.0.0.0", // 设置为0.0.0.0并配合useLocalIp可以局域网访问
-        useLocalIp: true, // 使用本机IP打开devServer，而不是localhost
-        proxy: {// 可以通过proxy代理其他服务器的api
-            "/api": "http://nonghe.vaovao.cn:8080/nonghe"
-        }
+        host: "localhost",
+        port:"9098",
+        // useLocalIp: true, // 使用本机IP打开devServer，而不是localhost
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080',
+                // target: 'http://192.168.3.130:8080',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+
+        },
     },
     module: {
         rules: [{
             test: /\.css$/, // 开发环境不提取css
             include: [config.SRC_PATH],
             exclude: [config.VENDORS_PATH],
-            use: ['style-loader', 'css-loader', 'postcss-loader', {
-                loader: 'px2rem-loader',
-                options: {
-                    remUnit: config.rem
-                }
-            },]
+            use: ['style-loader', 'css-loader', 'postcss-loader']
         }, {
             test: /\.scss$/, // 开发环境不提取css
             include: [config.SRC_PATH],
